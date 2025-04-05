@@ -125,7 +125,7 @@
     }
 
     function saveContact() {
-      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Top Chrono Assainissement\nTEL:0988196949\nEMAIL:info@topchrono.fr\nURL:https://www.topchrono.fr\nEND:VCARD`;
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Top Chrono Assainissement\nTEL:0988196949\nEMAIL:info@topchrono.fr\nURL:https://www.topdebouchage.fr\nEND:VCARD`;
       const blob = new Blob([vcard], { type: 'text/vcard' });
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
@@ -140,10 +140,10 @@
         navigator.share({
           title: 'Top Chrono Assainissement',
           text: 'Intervention rapide en Île-de-France',
-          url: 'https://www.topchrono.fr'
+          url: 'https://www.topdebouchage.fr'
         });
       } else {
-        navigator.clipboard.writeText('https://www.topchrono.fr');
+        navigator.clipboard.writeText('https://www.topdebouchage.fr');
         alert('Lien copié dans le presse-papiers.');
       }
     }

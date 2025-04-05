@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Chrono Assainissement - Carte de contact</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .fade-toggle {
+      animation: fadeToggle 0.5s ease forwards;
+    }
+    @keyframes fadeToggle {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    :root {
+      --blue-dark: #2f4f9f;
+      --blue-light: #3ec5d5;
+      --blue-bg: #b1d0e3;
+    }
+    .bg-primary {
+      background-color: var(--blue-dark);
+    }
+    .text-primary {
+      color: var(--blue-dark);
+    }
+    .bg-accent {
+      background-color: var(--blue-light);
+    }
+    .hover\:bg-accent-dark:hover {
+      background-color: #35b6c5;
+    }
+    .bg-soft {
+      background-color: var(--blue-bg);
+    }
+    .btn, button[type="submit"] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border-radius: 9999px;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.3s ease;
+      background: linear-gradient(90deg, #2f4f9f 0%, #3ec5d5 100%);
+      color: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      border: none;
+    }
+    .btn:hover, button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+      opacity: 0.95;
+    }
+    #form-devis {
+      display: none;
+    }
+    .star-zoom {
+    opacity: 0;
+    transform: scale(0.5);
+    animation: zoomIn 1.5s ease-in-out forwards;
+  }
+
+  .star-zoom:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+
+  .star-zoom:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .star-zoom:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  .star-zoom:nth-child(4) {
+    animation-delay: 0.8s;
+  }
+
+  .star-zoom:nth-child(5) {
+    animation-delay: 1s;
+  }
+
+  @keyframes zoomIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+    
+  </style>
+  <script>
+    function toggleForm() {
+      const form = document.getElementById('form-devis');
+      if (form.style.display === 'none') {
+        form.style.display = 'block';
+        form.classList.add('fade-toggle');
+      } else {
+        form.style.display = 'none';
+        form.classList.remove('fade-toggle');
+      }
+    }
+
+    function saveContact() {
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Top Chrono Assainissement\nTEL:0988196949\nEMAIL:info@topchrono.fr\nURL:https://www.topchrono.fr\nEND:VCARD`;
+      const blob = new Blob([vcard], { type: 'text/vcard' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute('download', 'Top_Chrono.vcf');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function shareContact() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Top Chrono Assainissement',
+          text: 'Intervention rapide en Île-de-France',
+          url: 'https://www.topchrono.fr'
+        });
+      } else {
+        navigator.clipboard.writeText('https://www.topchrono.fr');
+        alert('Lien copié dans le presse-papiers.');
+      }
+    }
+  </script>
+</head>
+<body class="bg-soft text-gray-800">
+  <div class="min-h-screen flex items-center justify-center px-4 py-12 fade-in">
+    <div class="w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden p-6 text-center">
+      <img src="Logo.png" alt="Logo Top Chrono" class="w-40 mx-auto block mb-4">
+    
+      <h1 class="text-2xl font-extrabold text-primary">Intervention rapide 24H/7J</h1>
+      <!-- <p class="text-sm text-gray-600 mt-1 mb-4">Intervention rapide 24h/24 - Île-de-France</p> -->
+
+      <div class="flex flex-col gap-3 text-sm">
+        <a href="tel:0988196949" class="btn">
+          <i class="fa-solid fa-phone"></i> Appeler : 09 88 19 69 49
+        </a>
+
+        <button onclick="toggleForm()" class="btn">
+          <i class="fa-solid fa-file-invoice-dollar"></i> Demander un devis
+        </button>
+       
+      </div>
+      
+
+      <div id="form-devis" class="mt-6 text-left">
+        <h2 class="text-base font-bold text-primary mb-4">Formulaire de devis</h2>
+        <form class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
+            <input type="text" placeholder="Votre nom" class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input type="email" placeholder="Votre adresse e-mail" class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <textarea placeholder="Décrivez votre besoin" class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3" required></textarea>
+          </div>
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+      <div class="mt-10 bg-gray-100 rounded-xl px-4 py-6 text-left">
+  <h2 class="text-xl font-bold text-primary mb-4 text-center flex flex-col items-center">
+    <img src="https://cdn-icons-png.flaticon.com/512/189/189688.png" alt="Icône assainissement" class="w-6 h-6 mx-auto block mb-2">
+    Nos Services
+  </h2>
+  <ul class="space-y-4">
+    <li class="flex items-start gap-3 text-sm">
+      <i class="ti ti-tool text-xl text-blue-600"></i>
+      <div class="text-center w-full">
+        <strong class="text-gray-900">Débouchage</strong><br>
+        <span class="text-gray-600">Toilettes, évier, canalisations bouchées</span>
+      </div>
+    </li>
+    <li class="flex items-start gap-3 text-sm">
+      <i class="ti ti-camera-cog text-xl text-blue-600"></i>
+      <div class="text-center w-full">
+        <strong class="text-gray-800">Inspection caméra</strong><br>
+        <span class="text-gray-600">Diagnostic vidéo de vos canalisations</span>
+      </div>
+    </li>
+    <li class="flex items-start gap-3 text-sm">
+      <i class="ti ti-wash text-xl text-blue-600"></i>
+      <div class="text-center w-full">
+        <strong class="text-gray-800">Curage réseaux</strong><br>
+        <span class="text-gray-600">Nettoyage haute pression</span>
+      </div>
+    </li>
+    <li class="flex items-start gap-3 text-sm">
+      <i class="ti ti-tank text-xl text-blue-600"></i>
+      <div class="text-center w-full">
+        <strong class="text-gray-800">Pompage fosse</strong><br>
+        <span class="text-gray-600">Vidange fosse septique et bac à graisse</span>
+      </div>
+    </li>
+  </ul>
+</div>
+      
+      <!-- Boutons déplacés -->
+      <div class="flex flex-col gap-3 text-sm mt-6">
+        <a href="https://www.topdebouchage.fr/" target="_blank" class="btn w-full">
+          <i class="fa-solid fa-globe"></i> Visiter le site web
+          <a href="https://www.google.com/search?q=Top+Chrono+Assainissement+avis" target="_blank" class="btn w-full ">
+            <i class="fa-solid fa-star"></i> Donnez votre avis
+          </a>
+        <div class="flex gap-3">
+          <button onclick="saveContact()" class="btn w-full bg-gradient-to-r from-teal-500 to-teal-400 hover:from-teal-600 hover:to-teal-500 text-white font-bold py-3 rounded-lg shadow-md hover:shadow-lg">
+            💾 Sauvegarder
+          </button>
+          <button onclick="shareContact()" class="btn w-full bg-gradient-to-r from-indigo-500 to-indigo-400 hover:from-indigo-600 hover:to-indigo-500 text-white font-bold py-3 rounded-lg shadow-md hover:shadow-lg">
+            📤 Partager
+          </button>
+        </div>
+      </div>
+  <div class="flex gap-1 text-yellow-400 text-xl">
+    <i class="ti ti-star-filled animate-stars"></i>
+    <i class="ti ti-star-filled animate-stars"></i>
+    <i class="ti ti-star-filled animate-stars"></i>
+    <i class="ti ti-star-filled animate-stars"></i>
+    <i class="ti ti-star-half-filled animate-stars"></i>
+  </div>
+
+
+
+        <a href="https://am2digital.github.io/VISITEAHMED" class="text-xs text-gray-400">réalisé par Am2Tech</p>
+      </div>
+      
+    </div>
+  </div>
+  
+</body>
+</html>
